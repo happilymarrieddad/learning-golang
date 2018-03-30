@@ -1,4 +1,4 @@
-package home
+package status
 
 import (
 	"github.com/go-xorm/xorm"
