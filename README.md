@@ -1,6 +1,9 @@
 Learning Golang
 ================
 
+## Videos
+Please take a few minutes when you get a chance to go look through the branches. That's where the "past" code exists. Thanks!
+
 
 ## RSA512
 ```bash
