@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./src/system/app"
+	"learning-golang/api.example.com/src/system/app"
 	DB "learning-golang/api.example.com/src/system/db"
 
 	"flag"

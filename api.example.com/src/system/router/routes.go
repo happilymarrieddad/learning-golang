@@ -3,7 +3,6 @@ package router
 import (
 	"learning-golang/api.example.com/pkg/types/routes"
 	HomeHandler "learning-golang/api.example.com/src/controllers/home"
-	"log"
 	"net/http"
 )
 
