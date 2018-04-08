@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
@@ -16,6 +17,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	email := r.FormValue("email")
 	password := r.FormValue("password")
+
+	log.Println(email)
+	log.Println(password)
 
 	if len(email) < 1 || len(password) < 1 {
 		http.Error(w, "Email and password are required.", http.StatusUnauthorized)
@@ -39,7 +43,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	login := LoginData{User: user, Token: token}
 
 	http.SetCookie(w, &http.Cookie{
-		Name:       "api.example.com",
+		Name:       os.Getenv("COOKIE_NAME"),
 		Value:      token,
 		Path:       "/",
 		RawExpires: "0",

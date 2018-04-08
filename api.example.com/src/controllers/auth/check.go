@@ -10,11 +10,17 @@ import (
 
 func Check(w http.ResponseWriter, r *http.Request) {
 	tokenVal := r.Header.Get("X-App-Token")
+	if len(tokenVal) < 1 {
+		log.Println("Ignoring request. No token present.")
+		http.Error(w, "Token required for check.", http.StatusUnauthorized)
+		return
+	}
 
 	user, err := jwt.GetUserFromToken(db, tokenVal)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
 	}
 
 	login := LoginData{User: user, Token: tokenVal}
