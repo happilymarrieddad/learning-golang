@@ -3,6 +3,9 @@ GCMD=run
 GPATH=main.go
 GO_VERSION=1.10
 
+RA512=4096
+RA256=2048
+
 run:
 	make build
 	$(GCC) $(GCMD) $(GPATH)
@@ -12,7 +15,7 @@ build:
 
 build_db:
 	rm pkg/db/db_structs.go
-	go run pkg/db/main.go -json=./pkg/db/config.json
+	go run pkg/main.go -json=./pkg/db/config.json
 	mv db_structs.go pkg/db/
 
 install:
@@ -38,3 +41,7 @@ install_go:
 	sudo rm -rf /usr/local/go
 	sudo mv go /usr/local
 	rm go$(GO_VERSION).linux-amd64.tar.gz
+
+create_keys:
+	ssh-keygen -t rsa -b $(RA512) -f keys/app.rsa
+	openssl rsa -in keys/app.rsa -pubout -outform PEM -out keys/app.rsa.pub
