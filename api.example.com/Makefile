@@ -21,6 +21,8 @@ build_db:
 install:
 	make install_routes
 	make install_db
+	make install_encryption
+	make install_jwt
 
 install_encryption:
 	go get -u golang.org/x/crypto/bcrypt
@@ -28,6 +30,8 @@ install_routes:
 	go get -u github.com/gorilla/mux
 install_db:
 	go get -u github.com/go-xorm/xorm
+install_jwt:
+	go get -u github.com/dgrijalva/jwt-go
 
 # Please add these to your bash file
 #
