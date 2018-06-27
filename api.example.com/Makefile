@@ -14,6 +14,7 @@ build:
 	make build_db
 
 build_db:
+	db-migrate up
 	rm pkg/db/db_structs.go
 	go run pkg/main.go -json=./pkg/db/config.json
 	mv db_structs.go pkg/db/
