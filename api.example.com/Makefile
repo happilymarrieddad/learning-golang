@@ -1,7 +1,7 @@
 GCC=go
 GCMD=run
 GPATH=main.go
-GO_VERSION=1.10
+GO_VERSION=1.10.3
 
 RA512=4096
 RA256=2048
@@ -45,6 +45,8 @@ install_go:
 	sudo rm -rf /usr/local/go
 	sudo mv go /usr/local
 	rm go$(GO_VERSION).linux-amd64.tar.gz
+	make install
+	source ~/.zshrc
 
 create_keys:
 	ssh-keygen -t rsa -b $(RA512) -f keys/app.rsa

@@ -1,12 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Alertifyjs from 'vue2-alertifyjs'
 import Cookies from 'js-cookie'
  
 import App from './App'
 import router from './router'
 import Server from '@/modules/Server.js'
+import Store from '@/modules/Store'
 
 
 
@@ -56,6 +58,7 @@ Vue.use(Server,{
 	test:'1'
 })
 
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 new Vue({
@@ -67,6 +70,7 @@ new Vue({
 			user:{}
 		}
 	},
+	store:new Vuex.Store(Store),
 	router,
 	components: { App },
 	template: '<App/>',
@@ -84,6 +88,8 @@ new Vue({
 	},
 	mounted() {
 		let vm = this
+
+		vm.$store.dispatch('setRoot',vm)
 
 		let cookie = Cookies.get('api.example.com')
 		this.$server.testAuth(cookie)

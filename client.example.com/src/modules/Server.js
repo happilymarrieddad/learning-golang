@@ -1,10 +1,45 @@
 import axios from 'axios'
 import qs from 'qs'
-
+import Cookies from 'js-cookie'
 
 class Server {
 	constructor(opts) {
 		this.baseUrl = 'http://localhost:3000'
+	}
+
+	request(url,data,method) {
+		let self = this
+		method = method || 'GET'
+		data = data || {}
+
+		return new Promise((resolve,reject) => {
+			if (!url || typeof url != 'string') return reject('Invalid request')
+
+			let Uri = self.baseUrl + ( url[0] != '/' ? '/' : '' ) + url
+			let cookie = Cookies.get('api.example.com')
+
+			let packet = {
+				method,
+				url:Uri,
+				headers: { "X-App-Token":cookie }
+			}
+
+
+			switch(method) {
+				case "POST":
+					packet.data = qs.stringify(data)
+					break
+
+				case "GET":
+					packet.params = data
+					break
+			}
+
+
+			axios(packet)
+				.then(res => resolve(res.data))
+				.catch(reject)
+		})
 	}
 
 
