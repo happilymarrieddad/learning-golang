@@ -1,7 +1,8 @@
 <template lang='pug'>
 
 	table.uk-table
-		caption Users Page
+		caption
+			router-link(to='/users/create') Create New User
 		thead
 			tr
 				th First Name

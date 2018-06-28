@@ -84,6 +84,12 @@ new Vue({
 			
 			vm.authenticated = true
 			vm.$router.push({ path:'/' })
+		},
+		info(msg) {
+			alert(msg)
+		},
+		error(msg) {
+			alert(msg)
 		}
 	},
 	mounted() {

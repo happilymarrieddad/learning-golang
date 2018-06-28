@@ -14,6 +14,14 @@ export default {
 
 				return resolve()
 			})
+		},
+		create({ dispatch,commit,getters,state,rootGetters,rootState },new_user) {
+			return new Promise(async (resolve,reject) => {
+				
+				let res = await rootState.$root.$server.request(`/v${ state.version }/users`,new_user,'POST')
+
+				return resolve(res)
+			})
 		}
 	},
 	mutations:{
