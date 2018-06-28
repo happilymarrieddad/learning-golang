@@ -40,6 +40,7 @@ func GetRoutes(DB *xorm.Engine) (SubRoute map[string]routes.SubRoutePackage) {
 				routes.Route{"UsersStore", "POST", "/users", UsersHandler.Store},
 				routes.Route{"UsersEdit", "GET", "/users/{id}/edit", UsersHandler.Edit},
 				routes.Route{"UsersUpdate", "PUT", "/users/{id}", UsersHandler.Update},
+				routes.Route{"UsersDestroy", "DELETE", "/users/{id}", UsersHandler.Destroy},
 			},
 			Middleware: Middleware,
 		},

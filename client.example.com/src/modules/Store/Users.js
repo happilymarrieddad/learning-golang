@@ -38,6 +38,14 @@ export default {
 
 				return resolve(res)
 			})
+		},
+		destroy({ dispatch,commit,getters,state,rootGetters,rootState },id) {
+			return new Promise(async (resolve,reject) => {
+				
+				let res = await rootState.$root.$server.request(`/v${ state.version }/users/${ id }`,{},'DELETE')
+
+				return resolve(res)
+			})
 		}
 	},
 	mutations:{

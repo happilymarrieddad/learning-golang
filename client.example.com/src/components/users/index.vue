@@ -16,7 +16,7 @@
 				td {{ user.last }}
 				td {{ user.email }}
 				td
-					button.uk-button.uk-button-primary Delete
+					button.uk-button.uk-button-primary(@click.prevent='destroy(user.id)') Delete
 
 
 </template>
@@ -35,6 +35,16 @@ export default {
 		let vm = this
 
 		vm.$store.dispatch('users/index')
+	},
+	methods:{
+		destroy(id) {
+			let vm = this
+			
+			vm.$store.dispatch('users/destroy',id)
+				.then(res => {
+					vm.$store.dispatch('users/index')
+				})
+		}
 	}
 }
 </script>
