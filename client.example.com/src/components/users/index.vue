@@ -11,11 +11,11 @@
 				th
 		tbody
 			tr(v-for='user in users')
-				td {{ user.first }}
+				td
+					router-link(:to="'/users/' + user.id + '/edit'") {{ user.first }}
 				td {{ user.last }}
 				td {{ user.email }}
 				td
-					button.uk-button.uk-button-default Edit
 					button.uk-button.uk-button-primary Delete
 
 

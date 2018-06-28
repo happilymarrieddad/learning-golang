@@ -16,8 +16,10 @@ routes.push({ path:'/',component:Dashboard,meta:{ auth:true } })
 
 const Users = () => import('@/components/users/index.vue')
 const UsersCreate = () => import('@/components/users/create.vue')
+const UsersEdit = () => import('@/components/users/edit.vue')
 routes.push({ path:'/users',component:Users,meta:{ auth:true } })
 routes.push({ path:'/users/create',component:UsersCreate,meta:{ auth:true } })
+routes.push({ path:'/users/:id/edit',component:UsersEdit,meta:{ auth:true } })
 
 
 

@@ -26,6 +26,7 @@ class Server {
 
 
 			switch(method) {
+				case "PUT":
 				case "POST":
 					packet.data = qs.stringify(data)
 					break

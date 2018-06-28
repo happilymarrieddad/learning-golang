@@ -26,15 +26,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ```bash
 
 
-GET	/users/{user}/edit	edit	users.edit
-
-PUT/PATCH	/users/{user}	update	users.update
 
 DELETE	/users/{user}	destroy	users.destroy
 
 
 CRUD
-Update
 Delete
 
 ```

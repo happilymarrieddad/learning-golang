@@ -55,7 +55,7 @@ export default {
 		 	}
 
 		 	vm.$store
-		 		.dispatch('users/create',new_user)
+		 		.dispatch('users/store',new_user)
 		 		.then(newly_created_user => {
 		 			vm.$router.push({ path:'/users' })
 		 		})

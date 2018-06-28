@@ -15,10 +15,26 @@ export default {
 				return resolve()
 			})
 		},
-		create({ dispatch,commit,getters,state,rootGetters,rootState },new_user) {
+		store({ dispatch,commit,getters,state,rootGetters,rootState },new_user) {
 			return new Promise(async (resolve,reject) => {
 				
 				let res = await rootState.$root.$server.request(`/v${ state.version }/users`,new_user,'POST')
+
+				return resolve(res)
+			})
+		},
+		edit({ dispatch,commit,getters,state,rootGetters,rootState },id) {
+			return new Promise(async (resolve,reject) => {
+				
+				let res = await rootState.$root.$server.request(`/v${ state.version }/users/${ id }/edit`)
+
+				return resolve(res)
+			})
+		},
+		update({ dispatch,commit,getters,state,rootGetters,rootState },edited_user) {
+			return new Promise(async (resolve,reject) => {
+				
+				let res = await rootState.$root.$server.request(`/v${ state.version }/users/${ edited_user.id }`,edited_user,'PUT')
 
 				return resolve(res)
 			})
