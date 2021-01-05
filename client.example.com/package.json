@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "alertify-js": "^0.3.12",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "js-cookie": "^2.2.0",
     "pug": "^2.0.4",
     "qs": "^6.7.0",
